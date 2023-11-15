@@ -9,15 +9,19 @@
 </head>
 <body>
     <div id="root">
+        <!-- <canvas id="pointsCanvas"></canvas>    -->
         <header>
+
             <div class="container">
+           
                 <h2 class="logo">
                     <img src="./assets/images/logo-lance.png" alt="Lance Negócios">
                 </h2>
                 <nav class="nav">
+                  
                     <a class="nav__item" href="#sobre">Sobre</a>
                     <a class="nav__item" href="#produtos">Produtos</a>
-                    <a class="nav__item" href="#como-funciona">Como funciona</a>
+                    <a class="nav__item" href="#contato">Contato</a>
                 </nav>
                 <div class="hero">
                     <h1>Veja como acelerar a criação do seu negócio</h1>
@@ -80,6 +84,10 @@
                 </article>
             </div>
         </section>
+  
+
+
+
 
         <section id="como-funciona">
             <div class="container">
@@ -110,12 +118,134 @@
                 </article>
             </div>
         </section>
+
+        <section id="contato">
+            <div class="container">
+                <article>
+                    <h1>Fale conosco</h1>
+       
+                    <form action="#" method="post">
+                        <div>
+                            <label for="nome">Nome:</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                            
+                        <div>
+
+                            <label for="email">E-mail:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                
+                        <div>
+
+                            <label for="mensagem">Mensagem:</label>
+                            <textarea 
+                                id="mensagem" 
+                                name="mensagem" 
+                                rows="8" required></textarea>
+                        </div>
+                            
+                        <button 
+                            onclick="alert('Obrigado! Entraremos em contato em breve!')"  
+                            type="submit">Enviar
+                        </button>
+                    </form>
+                    </div>
+                </article>
+            </div>
+        </section>
         <footer>
             <div class="container">
                 <p>&copy; Todos os direitos reservados. <br>
-                <small>Desenvolvido por <a href="https://github.com/cavalcantemmarcelo">Marcelo</a>.</small></p>
+                <small>Desenvolvido por <a href="https://github.com/lucianafront">Luciana</a>.</small></p>
             </div>
         </footer>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const canvas = document.getElementById("pointsCanvas");
+          const ctx = canvas.getContext("2d");
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+    
+          const points = [];
+    
+          function createPoint() {
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height;
+            const radius = Math.random() * 2 + 1; // Tamanho aleatório entre 2 e 7
+            const alpha = Math.random(); // Transparência aleatória
+    
+            points.push({ x, y, radius, alpha });
+          }
+    
+          function drawPoints() {
+            points.forEach((point) => {
+              ctx.beginPath();
+              ctx.arc(point.x, point.y, point.radius, 0, 1 * Math.PI);
+              ctx.fillStyle = `rgba(255, 255, 255, ${point.alpha})`;
+              ctx.fill();
+            });
+          }
+    
+          function animate() {
+            drawPoints();
+            requestAnimationFrame(animate);
+          }
+    
+          // Crie alguns pontos iniciais
+          for (let i = 0; i < 10; i++) {
+            createPoint();
+          }
+    
+          animate();
+        });
+      </script>
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const canvas = document.getElementById("pointsCanvas");
+          const ctx = canvas.getContext("2d");
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+    
+          const points = [];
+    
+          function createPoint() {
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height;
+            const radius = Math.random() * 5 + 2; // Tamanho aleatório entre 2 e 7
+            const alpha = Math.random(); // Transparência aleatória
+    
+            points.push({ x, y, radius, alpha });
+          }
+    
+          function drawPoints() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+            points.forEach((point, index) => {
+              ctx.beginPath();
+              ctx.arc(point.x, point.y, point.radius, 0, 2 * Math.PI);
+              ctx.fillStyle = `rgba(255, 255, 255, ${point.alpha})`;
+              ctx.fill();
+    
+              // Diminui a transparência ao longo do tempo
+              point.alpha -= 0.005;
+    
+              // Remove pontos completamente transparentes
+              if (point.alpha <= 0) {
+                points.splice(index, 1);
+              }
+            });
+          }
+    
+          function animate() {
+            createPoint();
+            drawPoints();
+            requestAnimationFrame(animate);
+          }
+    
+          animate();
+        });
+      </script> -->
 </body>
 </html>

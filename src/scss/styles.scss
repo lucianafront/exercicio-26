@@ -1,25 +1,58 @@
-$color-primary: #195484;
+
+$color-laranja: #DE5426;
+$color-amarela: #FAA61A;
+$color-azul-claro1: #9CDCF9;
+$color-azul-claro2: #63CDF6;
+$color-azul-escuro:#152142;
+$color-branca: #FDF5F3;
+$color-cinza-clara:#dcdcdc;
+$font-color-secondary: #454545;
+
+
+// // PALETA DE CORES
+// $color-primary: #0c152f;
+// $color-secondary: #f26E22;
+// $font-color-primary: #f2f2f2;
+// $font-color-secondary: #014011;
+// $color-verde-claro: #025918;
+
+
+$color-primary:#0b203b;
 $color-secondary: #f58220;
 $font-color-primary: #ffffff;
-$font-color-secondary: #454545;
+
+
+
+
+// FONTS STYLE
+@import 'fonts';
+@import url('https://fonts.googleapis.com/css2?family=Fruktur&display=swap');
+
+
 $font-default: Arial, Helvetica, sans-serif;
 $font-size-default: 1.6rem;
 $font-size-nav: 1.8rem;
 
-@import 'fonts';
-@import url('https://fonts.googleapis.com/css2?family=Fruktur&display=swap');
-@import 'nav';
 
 html {
     font-size: 62.5%;
     scroll-behavior: smooth;
+
 }
 
 body {
     background-color: $color-primary;
     font-family: $font-default;
-    margin: 0;
 }
+
+canvas {
+    display: block;
+      margin: auto;
+      position: absolute; /* Posicionamento absoluto */
+      top: 0; /* Posição no topo da tela */
+      left: 0; /* Posição à esquerda da tela */
+      z-index: 1; /* Garante que o canvas fique sobreposto a outros elementos */
+  }
 
 h1 {
     color: $font-color-primary;
@@ -34,7 +67,6 @@ article {
         font-size: 3rem;
         text-align: left;
     }
-
 }
 
 h2 {
@@ -43,7 +75,7 @@ h2 {
     font-weight: 700;
     font-size: 2rem;
     margin-top: 4rem;
-    text-shadow: 1px 2px 8px #FFFFFF;
+    text-shadow: 1px 2px 8px $font-color-primary;
 }
 
 #root,
@@ -56,8 +88,8 @@ footer {
 }
 
 section {
-    padding: 4rem 0;
-    margin: 0;
+    padding: 4rem;
+    margin: 0%;
 }
 
 .container {
@@ -67,10 +99,31 @@ section {
     max-width: 90vw;
 }
 
+header.container {
+    .hero {
+        background-image: url('../assets/images/logo-lance.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 50rem;
+        display: flex;
+        align-items: flex-end;
+        width: 100%;
+    
+        h1 {
+            text-align: center;
+            width: 100%;
+        }
+    }
+}
+
+
+@import 'nav';
 @import 'animations';
 @import 'header';
 @import 'sobre';
 @import 'produtos';
 @import 'vitrine';
+@import 'contato';
 @import 'steps';
 @import 'footer';
+
